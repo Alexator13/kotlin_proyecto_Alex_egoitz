@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_proyecto_alex_egoitz.databinding.FragmentSecondBinding
 
 /**
@@ -14,10 +16,8 @@ import com.example.kotlin_proyecto_alex_egoitz.databinding.FragmentSecondBinding
 class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    lateinit var miRecyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,9 +32,10 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
+        miRecyclerView = binding.ViewViajes
+        miRecyclerView.layoutManager = LinearLayoutManager(activity)
+        miRecyclerView.adapter = Adaptador()
+
     }
 
     override fun onDestroyView() {
