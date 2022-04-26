@@ -34,7 +34,7 @@ class SecondFragment : Fragment() {
 
         miRecyclerView = binding.ViewViajes
         miRecyclerView.layoutManager = LinearLayoutManager(activity)
-        miRecyclerView.adapter = Adaptador()
+        miRecyclerView.adapter = Adaptador( )
 
     }
 
