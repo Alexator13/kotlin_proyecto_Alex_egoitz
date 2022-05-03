@@ -1,12 +1,15 @@
 package com.example.kotlin_proyecto_alex_egoitz
 
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Spinner
 import com.example.kotlin_proyecto_alex_egoitz.databinding.FourthFragmentBinding
 import com.example.kotlin_proyecto_alex_egoitz.databinding.ThirdFragmentBinding
+
 
 class Fourth_Fragment : Fragment() {
     private var _binding: FourthFragmentBinding? = null
@@ -15,13 +18,19 @@ class Fourth_Fragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+
+
+
     override fun onCreateView(
+
+
+
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FourthFragmentBinding.bind().inflate(inflater, container, false)
         return binding.root
+
 
     }
 
@@ -34,4 +43,6 @@ class Fourth_Fragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }
