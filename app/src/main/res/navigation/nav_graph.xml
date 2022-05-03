@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_third_fragment2"
+            app:destination="@id/third_fragment2" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -24,5 +27,26 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_fourth_Fragment2"
+            app:destination="@id/fourth_Fragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/third_fragment2"
+        android:name="com.example.kotlin_proyecto_alex_egoitz.third_fragment"
+        android:label="third_fragment"
+        tools:layout="@layout/third_fragment" >
+        <action
+            android:id="@+id/action_third_fragment2_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fourth_Fragment2"
+        android:name="com.example.kotlin_proyecto_alex_egoitz.Fourth_Fragment"
+        android:label="fourth_fragment"
+        tools:layout="@layout/fourth_fragment" >
+        <action
+            android:id="@+id/action_fourth_Fragment2_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
     </fragment>
 </navigation>
