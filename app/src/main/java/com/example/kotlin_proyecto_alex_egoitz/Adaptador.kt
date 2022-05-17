@@ -4,22 +4,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
-class Adaptador : RecyclerView.Adapter<Adaptador.ViewHolder>() {
+class Adaptador(var listaViajes: MutableList<Viaje>, var secondFragment: SecondFragment) : RecyclerView.Adapter<Adaptador.ViewHolder>() {
 
     inner class ViewHolder (v: View):RecyclerView.ViewHolder(v){
         var nombre: TextView
         var destino: TextView
         var fecha1: TextView
         var fecha2: TextView
-
+        var id:Int=-1
         init {
+
 
             nombre = v.findViewById(R.id.textViewNombre)
             destino = v.findViewById(R.id.textViewDestino)
             fecha1 = v.findViewById(R.id.textViewFecha1)
             fecha2 = v.findViewById(R.id.textViewFecha2)
+        }
+        init {
+            v.setOnClickListener {
+                val bundle = bundleOf("id" to this.id )
+                secondFragment.findNavController().navigate(R.id.action_SecondFragment_to_fourth_Fragment2, bundle)
+            }
         }
     }
 
@@ -31,15 +40,17 @@ class Adaptador : RecyclerView.Adapter<Adaptador.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        //return listaPeliculas.size
-        return 5
+
+        return listaViajes.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.nombre.text=""
-        holder.destino.text=""
-        holder.fecha1.text=""
-        holder.fecha1.text=""
+        holder.nombre.text = "${listaViajes[position].nombre}"
+        holder.destino.text="${listaViajes[position].destino}"
+        holder.fecha1.text="${listaViajes[position].fecha1}"
+        holder.fecha2.text= "${listaViajes[position].fecha2}"
+        holder.id = position
+
 
     }
 }

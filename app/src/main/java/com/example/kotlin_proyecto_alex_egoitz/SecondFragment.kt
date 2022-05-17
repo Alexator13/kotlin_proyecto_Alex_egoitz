@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_proyecto_alex_egoitz.databinding.FragmentSecondBinding
@@ -34,7 +33,7 @@ class SecondFragment : Fragment() {
 
         miRecyclerView = binding.ViewViajes
         miRecyclerView.layoutManager = LinearLayoutManager(activity)
-        miRecyclerView.adapter = Adaptador( )
+        miRecyclerView.adapter = Adaptador( (activity as MainActivity).listaViajes, this)
 
     }
 

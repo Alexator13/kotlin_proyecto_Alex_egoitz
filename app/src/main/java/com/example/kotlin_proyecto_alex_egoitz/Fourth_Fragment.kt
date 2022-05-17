@@ -9,11 +9,15 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import com.example.kotlin_proyecto_alex_egoitz.databinding.FourthFragmentBinding
+import com.example.kotlin_proyecto_alex_egoitz.databinding.FragmentSecondBinding
 import com.example.kotlin_proyecto_alex_egoitz.databinding.ThirdFragmentBinding
+import kotlinx.coroutines.newSingleThreadContext
 
 
 class Fourth_Fragment : Fragment() {
+
     private var _binding: FourthFragmentBinding? = null
 
     // This property is only valid between onCreateView and
@@ -24,19 +28,17 @@ class Fourth_Fragment : Fragment() {
 
 
     override fun onCreateView(
-
-
-
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
+        _binding = FourthFragmentBinding.inflate(inflater, container, false)
         return binding.root
-
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
 
         val spinner: Spinner = binding.spinnerDestinos
@@ -51,8 +53,24 @@ class Fourth_Fragment : Fragment() {
             // Apply the adapter to the spinner
             spinner.adapter = adapter
         }
-
-
+        val id:Int=arguments?.getInt("id") ?: -1
+        binding.editTextViajeNombre2.setText((activity as MainActivity).listaViajes[id].nombre)
+        binding.editTextSalidaFecha2.setText((activity as MainActivity).listaViajes[id].fecha1)
+        binding.editTextFechaVuelta2.setText((activity as MainActivity).listaViajes[id].fecha2)
+        binding.editTextNotas2.setText((activity as MainActivity).listaViajes[id].notas )
+        //botnes de editar y borrar
+        binding.buttonEditar.setOnClickListener {
+            (activity as MainActivity).listaViajes[id].nombre = binding.editTextViajeNombre2.text.toString()
+            (activity as MainActivity).listaViajes[id].destino = binding.spinnerDestinos.selectedItem.toString()
+            (activity as MainActivity).listaViajes[id].fecha1 = binding.editTextSalidaFecha2.text.toString()
+            (activity as MainActivity).listaViajes[id].fecha2 = binding.editTextFechaVuelta2.text.toString()
+            (activity as MainActivity).listaViajes[id].notas = binding.editTextNotas2.text.toString()
+            Toast.makeText(activity, "Viaje editado", Toast.LENGTH_SHORT).show()
+        }
+        binding.buttonBorrar.setOnClickListener {
+            (activity as MainActivity).listaViajes.remove((activity as MainActivity).listaViajes[id])
+            Toast.makeText(activity, "Viaje cancelado", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {

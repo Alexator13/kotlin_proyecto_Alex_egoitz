@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.kotlin_proyecto_alex_egoitz.databinding.FragmentFirstBinding
 import com.example.kotlin_proyecto_alex_egoitz.databinding.ThirdFragmentBinding
@@ -43,7 +45,29 @@ class third_fragment : Fragment() {
             // Apply the adapter to the spinner
             spinner.adapter = adapter
         }
+        binding.buttonGuardar.setOnClickListener {
+            var nombre:String = binding.editTextViajeNombre.text.toString()
+            var destino:String = binding.spinnerDestinos.selectedItem.toString()
+            var fecha1:String = binding.editTextSalidaFecha.text.toString()
+            var fecha2:String = binding.editTextFechaVuelta.text.toString()
+            var notas:String = binding.editTextNotas.text.toString()
+            var id:Int =  (activity as MainActivity).listaViajes.lastIndex + 1
+            (activity as MainActivity).listaViajes.add(id,Viaje(nombre,destino,fecha1,fecha2,notas))
+            Toast.makeText(activity , "Viaje guardado con exito", Toast.LENGTH_SHORT).show()
 
+        }
+
+
+
+    }
+
+    fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+    }
+
+    fun onNothingSelected(parent: AdapterView<*>) {
+        // Another interface callback
     }
 
 
