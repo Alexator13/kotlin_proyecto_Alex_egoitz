@@ -61,21 +61,6 @@
         app:layout_constraintVertical_bias="0.409" />
 
     <EditText
-        android:id="@+id/editTextDestino"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="Destino"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.191" />
-
-    <EditText
         android:id="@+id/editTextSalidaFecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,5 +87,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.625" />
 
+    <Spinner
+        android:id="@+id/spinnerDestinos"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.179" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
