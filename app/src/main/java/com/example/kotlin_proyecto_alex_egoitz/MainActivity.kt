@@ -9,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import com.example.kotlin_proyecto_alex_egoitz.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +17,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     var listaViajes:MutableList<Viaje> = mutableListOf()
-
+    val database by lazy { GfgDatabase.getDatabase(this ) }
+    val miRepositorio by lazy { Repositorio(database.miDao()) }
+    val miViewModel:ViajeViewModel by viewModels{ViajeViewModelFactory(miRepositorio)  }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
