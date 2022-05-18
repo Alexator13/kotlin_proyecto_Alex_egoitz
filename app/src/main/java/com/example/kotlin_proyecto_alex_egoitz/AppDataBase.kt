@@ -7,8 +7,8 @@ import androidx.room.RoomDatabase
 
 @Database(entities = arrayOf(Viajes::class), version =  1, exportSchema = false)
 abstract class GfgDatabase : RoomDatabase(){
-        abstract fun ViajeDao(): ViajeDao
-    abstract fun miDao(): ViajeDao
+        abstract fun getviajeDao():ViajeDao
+
 
     companion object{
 

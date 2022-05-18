@@ -8,17 +8,17 @@ import java.nio.channels.FileLock
 interface ViajeDao {
 
     @Query("SELECT * FROM viaje_tabla")
-    fun  mostraTodas(): Flow<List<Viaje>>
+    fun  mostraTodas(): Flow<List<Viajes>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertar(Viajes: Viaje)
+     fun insertar(Viajes: com.example.kotlin_proyecto_alex_egoitz.Viajes)
 
     @Query("DELETE FROM  viaje_tabla")
-    suspend fun borrarTodo()
+ fun borrarTodo()
     @Query("SELECT * FROM VIAJE_TABLA where idViaje like :id")
-    fun BuscarPorid(id:Int): Flow<Viaje>
+    fun BuscarPorid(id:Int): Flow<Viajes>
     @Update
-    suspend fun  Actualizar(Viajes: Viaje)
+   fun  Actualizar(Viajes: Viajes)
     @Delete
-    suspend fun Borrar(Viajes: Viaje)
+ fun Borrar(Viajes: Viajes)
 }

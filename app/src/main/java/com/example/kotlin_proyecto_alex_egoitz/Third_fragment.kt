@@ -19,6 +19,10 @@ class third_fragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    val db: GfgDatabase
+        get() {
+            TODO()
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,11 +59,13 @@ class third_fragment : Fragment() {
             (activity as MainActivity).listaViajes.add(id,Viaje(nombre,destino,fecha1,fecha2,notas))
             Toast.makeText(activity , "Viaje guardado con exito", Toast.LENGTH_SHORT).show()
 
+          saveViaje(ve = Viajes(id,nombre,destino,fecha1,fecha2,notas))
+            Toast.makeText(activity , "Viaje guardado con exito en base de datos", Toast.LENGTH_SHORT).show()
         }
 
 
-
     }
+    fun saveViaje(ve: Viajes) = db.getviajeDao().insertar(ve)
 
     fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
         // An item was selected. You can retrieve the selected item using

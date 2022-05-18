@@ -6,27 +6,27 @@ import kotlinx.coroutines.flow.Flow
 
 class Repositorio(val miDao: ViajeDao) {
 
-    val listaViaje : Flow<List<Viaje>> = miDao.mostraTodas()
+    val listaViaje : Flow<List<Viajes>> = miDao.mostraTodas()
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun Insertar(miViaje: Viaje){
+    suspend fun Insertar(miViaje: Viajes){
         miDao.insertar(miViaje)
     }
 
-    fun BuscarPorId(id:Int): Flow<Viaje>{
+    fun BuscarPorId(id:Int): Flow<Viajes>{
         return miDao.BuscarPorid(id)
     }
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun Borrar(miViaje: Viaje){
+    suspend fun Borrar(miViaje: Viajes){
         miDao.Borrar(miViaje)
     }
 
     @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun Actualizar(miViaje: Viaje){
+    suspend fun Actualizar(miViaje: Viajes){
         miDao.Actualizar(miViaje)
     }
 }

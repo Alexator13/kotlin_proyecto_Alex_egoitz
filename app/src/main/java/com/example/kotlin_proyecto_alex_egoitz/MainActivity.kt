@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     var listaViajes:MutableList<Viaje> = mutableListOf()
     val database by lazy { GfgDatabase.getDatabase(this ) }
-    val miRepositorio by lazy { Repositorio(database.miDao()) }
+    val miRepositorio by lazy { Repositorio(database.getviajeDao()) }
     val miViewModel:ViajeViewModel by viewModels{ViajeViewModelFactory(miRepositorio)  }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
