@@ -8,7 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
-class Adaptador(var listaViajes: MutableList<Viaje>, var secondFragment: SecondFragment) : RecyclerView.Adapter<Adaptador.ViewHolder>() {
+class Adaptador(var listaViajes: List<Viajes>, var secondFragment: SecondFragment) : RecyclerView.Adapter<Adaptador.ViewHolder>() {
 
     inner class ViewHolder (v: View):RecyclerView.ViewHolder(v){
         var nombre: TextView
@@ -23,7 +23,7 @@ class Adaptador(var listaViajes: MutableList<Viaje>, var secondFragment: SecondF
             destino = v.findViewById(R.id.textViewDestino)
             fecha1 = v.findViewById(R.id.textViewFecha1)
             fecha2 = v.findViewById(R.id.textViewFecha2)
-            
+
         }
         init {
             v.setOnClickListener {
@@ -46,8 +46,8 @@ class Adaptador(var listaViajes: MutableList<Viaje>, var secondFragment: SecondF
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.nombre.text = "${listaViajes[position].nombre}"
-        holder.destino.text="${listaViajes[position].destino}"
+        holder.nombre.text = "${listaViajes[position].name}"
+        holder.destino.text="${listaViajes[position].Destino}"
         holder.fecha1.text="${listaViajes[position].fecha1}"
         holder.fecha2.text= "${listaViajes[position].fecha2}"
         holder.id = position
