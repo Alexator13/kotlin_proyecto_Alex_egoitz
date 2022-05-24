@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_proyecto_alex_egoitz.databinding.FragmentSecondBinding
@@ -32,7 +33,7 @@ import kotlin.math.log
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity as AppCompatActivity).supportActionBar?.title = "Ver viajes"
         miRecyclerView = binding.ViewViajes
         miRecyclerView.layoutManager = LinearLayoutManager(activity)
         (activity as MainActivity).miViewModel.allViaje.observe(activity as MainActivity){ it -> miRecyclerView.adapter = Adaptador(it, this)

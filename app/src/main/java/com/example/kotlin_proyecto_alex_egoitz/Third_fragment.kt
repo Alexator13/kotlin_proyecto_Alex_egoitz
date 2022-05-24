@@ -10,6 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.example.kotlin_proyecto_alex_egoitz.databinding.FragmentFirstBinding
 import com.example.kotlin_proyecto_alex_egoitz.databinding.ThirdFragmentBinding
@@ -38,7 +39,7 @@ import com.example.kotlin_proyecto_alex_egoitz.databinding.ThirdFragmentBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        (activity as AppCompatActivity).supportActionBar?.title = "Nuevo viaje"
         val spinner: Spinner = binding.spinnerDestinos
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(

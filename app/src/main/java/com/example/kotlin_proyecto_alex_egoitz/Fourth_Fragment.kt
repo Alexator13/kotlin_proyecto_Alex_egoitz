@@ -10,6 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlin_proyecto_alex_egoitz.databinding.FourthFragmentBinding
 import com.example.kotlin_proyecto_alex_egoitz.databinding.FragmentSecondBinding
 import com.example.kotlin_proyecto_alex_egoitz.databinding.ThirdFragmentBinding
@@ -38,7 +39,7 @@ class Fourth_Fragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        (activity as AppCompatActivity).supportActionBar?.title = "Viaje"
         super.onViewCreated(view, savedInstanceState)
 
         val spinner: Spinner = binding.spinnerDestinos
