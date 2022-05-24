@@ -58,18 +58,44 @@ class Fourth_Fragment : Fragment() {
         binding.editTextSalidaFecha2.setText((activity as MainActivity).listaViajes[id].fecha1)
         binding.editTextFechaVuelta2.setText((activity as MainActivity).listaViajes[id].fecha2)
         binding.editTextNotas2.setText((activity as MainActivity).listaViajes[id].notas )
+
+
         //botnes de editar y borrar
         binding.buttonEditar.setOnClickListener {
             (activity as MainActivity).listaViajes[id].nombre = binding.editTextViajeNombre2.text.toString()
+            var nombre = binding.editTextViajeNombre2.text.toString()
             (activity as MainActivity).listaViajes[id].destino = binding.spinnerDestinos.selectedItem.toString()
+            var destino = binding.spinnerDestinos.selectedItem.toString()
             (activity as MainActivity).listaViajes[id].fecha1 = binding.editTextSalidaFecha2.text.toString()
+            var fecha1 = binding.editTextSalidaFecha2.text.toString()
             (activity as MainActivity).listaViajes[id].fecha2 = binding.editTextFechaVuelta2.text.toString()
+            var fecha2 = binding.editTextFechaVuelta2.text.toString()
             (activity as MainActivity).listaViajes[id].notas = binding.editTextNotas2.text.toString()
+            var notas = binding.editTextNotas2.text.toString()
             Toast.makeText(activity, "Viaje editado", Toast.LENGTH_SHORT).show()
+            var viaje2: Viajes = Viajes (id,nombre,destino,fecha1,fecha2,notas)
+
+            (activity as MainActivity).miViewModel.Actualizar(viaje2)
+
         }
         binding.buttonBorrar.setOnClickListener {
             (activity as MainActivity).listaViajes.remove((activity as MainActivity).listaViajes[id])
             Toast.makeText(activity, "Viaje cancelado", Toast.LENGTH_SHORT).show()
+
+            var nombre = binding.editTextViajeNombre2.text.toString()
+
+            var destino = binding.spinnerDestinos.selectedItem.toString()
+            var fecha1 = binding.editTextSalidaFecha2.text.toString()
+
+            var fecha2 = binding.editTextFechaVuelta2.text.toString()
+
+            var notas = binding.editTextNotas2.text.toString()
+            Toast.makeText(activity, "Viaje editado", Toast.LENGTH_SHORT).show()
+            var viaje2: Viajes = Viajes (id,nombre,destino,fecha1,fecha2,notas)
+
+
+
+            (activity as MainActivity).miViewModel.Borrar(viaje2)
         }
     }
 

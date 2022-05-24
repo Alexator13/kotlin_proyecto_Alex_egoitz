@@ -23,6 +23,7 @@ class Adaptador(var listaViajes: MutableList<Viaje>, var secondFragment: SecondF
             destino = v.findViewById(R.id.textViewDestino)
             fecha1 = v.findViewById(R.id.textViewFecha1)
             fecha2 = v.findViewById(R.id.textViewFecha2)
+            
         }
         init {
             v.setOnClickListener {

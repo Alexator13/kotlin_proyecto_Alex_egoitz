@@ -23,8 +23,9 @@ abstract class GfgDatabase : RoomDatabase(){
                     GfgDatabase::class.java,
                     "viaje_Dat"
 
-                ).build()
-                INSTANCE = instance
+                ).allowMainThreadQueries().build()
+
+                    INSTANCE = instance
 
                 instance
                 }

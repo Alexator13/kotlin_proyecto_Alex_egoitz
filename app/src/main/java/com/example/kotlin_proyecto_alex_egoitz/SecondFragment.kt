@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlin_proyecto_alex_egoitz.databinding.FragmentSecondBinding
+import java.nio.MappedByteBuffer
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
