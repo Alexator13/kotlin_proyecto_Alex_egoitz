@@ -1,6 +1,7 @@
 package com.example.kotlin_proyecto_alex_egoitz
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.kotlin_proyecto_alex_egoitz.databinding.FragmentFirstBinding
 import com.example.kotlin_proyecto_alex_egoitz.databinding.ThirdFragmentBinding
 
-class third_fragment : Fragment() {
+ class third_fragment : Fragment() {
     private var _binding: ThirdFragmentBinding? = null
 
     // This property is only valid between onCreateView and
@@ -24,7 +25,8 @@ class third_fragment : Fragment() {
             TODO()
         }
 
-    override fun onCreateView(
+
+     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -58,14 +60,16 @@ class third_fragment : Fragment() {
             var id:Int =  (activity as MainActivity).listaViajes.lastIndex + 1
             (activity as MainActivity).listaViajes.add(id,Viaje(nombre,destino,fecha1,fecha2,notas))
             Toast.makeText(activity , "Viaje guardado con exito", Toast.LENGTH_SHORT).show()
+            var viaje2: Viajes = Viajes (id,nombre,destino,fecha1,fecha2,notas)
 
-          saveViaje(ve = Viajes(id,nombre,destino,fecha1,fecha2,notas))
+            (activity as MainActivity).miViewModel.Insertar(viaje2)
+
             Toast.makeText(activity , "Viaje guardado con exito en base de datos", Toast.LENGTH_SHORT).show()
+
         }
 
 
     }
-    fun saveViaje(ve: Viajes) = db.getviajeDao().insertar(ve)
 
     fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
         // An item was selected. You can retrieve the selected item using

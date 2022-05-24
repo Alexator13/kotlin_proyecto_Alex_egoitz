@@ -12,7 +12,7 @@ import com.example.kotlin_proyecto_alex_egoitz.databinding.FragmentSecondBinding
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-abstract class SecondFragment : Fragment() {
+ class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding!!
