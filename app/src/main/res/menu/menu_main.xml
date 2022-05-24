@@ -3,8 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.kotlin_proyecto_alex_egoitz.MainActivity">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/ayuda_fr1"
+        android:title="Ayuda" />
+    <item
+        android:id="@+id/ayuda_fr2"
+        android:title="Ayuda" />
+    <item
+        android:id="@+id/ayuda_fr3"
+        android:title="Ayuda" />
+    <item
+        android:id="@+id/ayuda_fr4"
+        android:title="Ayuda" />
+    <item
+        android:id="@+id/creditos"
+        android:title="Creditos" />
+    <item
+        android:id="@+id/reset_fr3"
+        android:title="Resetear" />
 </menu>

@@ -2,8 +2,10 @@ package com.example.kotlin_proyecto_alex_egoitz
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -55,11 +57,13 @@ class Fourth_Fragment : Fragment() {
             spinner.adapter = adapter
         }
         val id:Int=arguments?.getInt("id") ?: -1
-        binding.editTextViajeNombre2.setText((activity as MainActivity).listaViajes[id].nombre)
-        binding.editTextSalidaFecha2.setText((activity as MainActivity).listaViajes[id].fecha1)
-        binding.editTextFechaVuelta2.setText((activity as MainActivity).listaViajes[id].fecha2)
-        binding.editTextNotas2.setText((activity as MainActivity).listaViajes[id].notas )
-
+        Log.d("id",id.toString())
+        if (id != -1) {
+            (activity as MainActivity).miViewModel.BuscarPorId(id)
+            binding.editTextSalidaFecha2.setText((activity as MainActivity).listaViajes[id].fecha1)
+            binding.editTextFechaVuelta2.setText((activity as MainActivity).listaViajes[id].fecha2)
+            binding.editTextNotas2.setText((activity as MainActivity).listaViajes[id].notas)
+        }
 
         //botnes de editar y borrar
         binding.buttonEditar.setOnClickListener {
@@ -98,6 +102,16 @@ class Fourth_Fragment : Fragment() {
 
             (activity as MainActivity).miViewModel.Borrar(viaje2)
         }
+
+        setHasOptionsMenu(true)
+
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        menu.findItem(R.id.ayuda_fr1)?.isVisible=false
+        menu.findItem(R.id.ayuda_fr2)?.isVisible=false
+        menu.findItem(R.id.ayuda_fr3)?.isVisible=false
     }
 
     override fun onDestroyView() {

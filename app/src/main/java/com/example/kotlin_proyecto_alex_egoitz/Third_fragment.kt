@@ -2,10 +2,8 @@ package com.example.kotlin_proyecto_alex_egoitz
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -39,6 +37,7 @@ import com.example.kotlin_proyecto_alex_egoitz.databinding.ThirdFragmentBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         (activity as AppCompatActivity).supportActionBar?.title = "Nuevo viaje"
         val spinner: Spinner = binding.spinnerDestinos
 // Create an ArrayAdapter using the string array and a default spinner layout
@@ -69,8 +68,37 @@ import com.example.kotlin_proyecto_alex_egoitz.databinding.ThirdFragmentBinding
 
         }
 
-
     }
+
+     override fun onPrepareOptionsMenu(menu: Menu) {
+         super.onPrepareOptionsMenu(menu)
+         menu.findItem(R.id.ayuda_fr1)?.isVisible=false
+         menu.findItem(R.id.ayuda_fr2)?.isVisible=false
+         menu.findItem(R.id.ayuda_fr4)?.isVisible=false
+     }
+
+     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+         // Handle action bar item clicks here. The action bar will
+         // automatically handle clicks on the Home/Up button, so long
+         // as you specify a parent activity in AndroidManifest.xml.
+         when (item.itemId) {
+             R.id.reset_fr3 -> {
+                 resetear()
+                 Log.d("resetear","reseteo")
+             }
+
+             else -> super.onOptionsItemSelected(item)
+         }
+         return true
+     }
+
+     fun resetear(){
+
+         binding.editTextViajeNombre.setText("")
+         binding.editTextSalidaFecha.setText("")
+         binding.editTextFechaVuelta.setText("")
+         binding.editTextNotas.setText("")
+     }
 
     fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
         // An item was selected. You can retrieve the selected item using

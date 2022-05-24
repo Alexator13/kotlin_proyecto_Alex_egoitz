@@ -50,7 +50,7 @@ class Adaptador(var listaViajes: List<Viajes>, var secondFragment: SecondFragmen
         holder.destino.text="${listaViajes[position].Destino}"
         holder.fecha1.text="${listaViajes[position].fecha1}"
         holder.fecha2.text= "${listaViajes[position].fecha2}"
-        holder.id = position
+        holder.id = listaViajes[position].idViaje
 
 
     }

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "viaje_tabla")
 data class Viajes(
-    @PrimaryKey val  idViaje:Int,
+    @PrimaryKey(autoGenerate = true) val  idViaje:Int =0,
     @ColumnInfo(name = "Nombe") val name:String?,
     @ColumnInfo(name = "Destino") val Destino:String?,
     @ColumnInfo(name = "Fecha1") val fecha1:String?,

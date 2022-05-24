@@ -3,6 +3,7 @@ package com.example.kotlin_proyecto_alex_egoitz
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -41,11 +42,19 @@ class FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
 
+        setHasOptionsMenu(true)
 
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        menu.findItem(R.id.ayuda_fr2)?.isVisible=false
+        menu.findItem(R.id.ayuda_fr3)?.isVisible=false
+        menu.findItem(R.id.ayuda_fr4)?.isVisible=false
     }
 }

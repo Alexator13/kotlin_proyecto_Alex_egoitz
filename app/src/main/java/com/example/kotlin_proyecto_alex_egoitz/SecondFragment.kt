@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -40,8 +41,15 @@ import kotlin.math.log
  }
         //miRecyclerView.adapter = Adaptador( (activity as MainActivity).listaViajes, this)
 
+        setHasOptionsMenu(true)
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        menu.findItem(R.id.ayuda_fr1)?.isVisible=false
+        menu.findItem(R.id.ayuda_fr3)?.isVisible=false
+        menu.findItem(R.id.ayuda_fr4)?.isVisible=false
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

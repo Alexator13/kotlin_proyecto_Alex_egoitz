@@ -9,6 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.kotlin_proyecto_alex_egoitz.databinding.ActivityMainBinding
 
@@ -46,10 +47,15 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
+        when (item.itemId) {
+            R.id.creditos -> Toast.makeText(this, "Programa creado por Alexander Regaolado y Egoitz Perez de Arrilucea", Toast.LENGTH_LONG).show()
+            R.id.ayuda_fr1 -> Toast.makeText(this, "Este es el menu principal", Toast.LENGTH_LONG).show()
+            R.id.ayuda_fr2 -> Toast.makeText(this, "Aqui se ven los viajes, si seleccionas uno se podra editar o borrar", Toast.LENGTH_LONG).show()
+            R.id.ayuda_fr3 -> Toast.makeText(this, "Aqui se puede crear un viaje nuevo", Toast.LENGTH_LONG).show()
+            R.id.ayuda_fr4 -> Toast.makeText(this, "Aqui se muestran los datos de el viaje, estos se pueden cambiar para editar el viaje o eliminar el viaje por completo", Toast.LENGTH_LONG).show()
             else -> super.onOptionsItemSelected(item)
         }
+        return true
     }
 
     override fun onSupportNavigateUp(): Boolean {
