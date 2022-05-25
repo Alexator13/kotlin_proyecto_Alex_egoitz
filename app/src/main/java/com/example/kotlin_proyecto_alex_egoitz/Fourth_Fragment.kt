@@ -13,13 +13,15 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.kotlin_proyecto_alex_egoitz.databinding.FourthFragmentBinding
-import com.example.kotlin_proyecto_alex_egoitz.databinding.FragmentSecondBinding
-import com.example.kotlin_proyecto_alex_egoitz.databinding.ThirdFragmentBinding
-import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.Job
+import kotlin.coroutines.CoroutineContext
+import com.example.kotlin_proyecto_alex_egoitz.Viajes as Viajes1
 
 
-class Fourth_Fragment : Fragment() {
+open class fFourth_Fragment : Fragment() {
 
     private var _binding: FourthFragmentBinding? = null
 
@@ -59,26 +61,29 @@ class Fourth_Fragment : Fragment() {
         val id:Int=arguments?.getInt("id") ?: -1
         Log.d("id",id.toString())
         if (id != -1) {
-            (activity as MainActivity).miViewModel.BuscarPorId(id)
-            binding.editTextSalidaFecha2.setText((activity as MainActivity).listaViajes[id].fecha1)
-            binding.editTextFechaVuelta2.setText((activity as MainActivity).listaViajes[id].fecha2)
-            binding.editTextNotas2.setText((activity as MainActivity).listaViajes[id].notas)
+          // (activity as MainActivity).miViewModel.BuscarPorId(id)
+
+
+        //   binding.editTextSalidaFecha2.setText((activity as MainActivity).listaViajes[id].nombre)
+           // binding.editTextSalidaFecha2.setText((activity as MainActivity).listaViajes[id].fecha1)
+            //binding.editTextFechaVuelta2.setText((activity as MainActivity).listaViajes[id].fecha2)
+            //binding.editTextNotas2.setText((activity as MainActivity).listaViajes[id].notas)
         }
 
         //botnes de editar y borrar
         binding.buttonEditar.setOnClickListener {
-            (activity as MainActivity).listaViajes[id].nombre = binding.editTextViajeNombre2.text.toString()
+         //   (activity as MainActivity).listaViajes[id].nombre = binding.editTextViajeNombre2.text.toString()
             var nombre = binding.editTextViajeNombre2.text.toString()
-            (activity as MainActivity).listaViajes[id].destino = binding.spinnerDestinos.selectedItem.toString()
+       //     (activity as MainActivity).listaViajes[id].destino = binding.spinnerDestinos.selectedItem.toString()
             var destino = binding.spinnerDestinos.selectedItem.toString()
-            (activity as MainActivity).listaViajes[id].fecha1 = binding.editTextSalidaFecha2.text.toString()
+        //    (activity as MainActivity).listaViajes[id].fecha1 = binding.editTextSalidaFecha2.text.toString()
             var fecha1 = binding.editTextSalidaFecha2.text.toString()
-            (activity as MainActivity).listaViajes[id].fecha2 = binding.editTextFechaVuelta2.text.toString()
+         //   (activity as MainActivity).listaViajes[id].fecha2 = binding.editTextFechaVuelta2.text.toString()
             var fecha2 = binding.editTextFechaVuelta2.text.toString()
-            (activity as MainActivity).listaViajes[id].notas = binding.editTextNotas2.text.toString()
+         //   (activity as MainActivity).listaViajes[id].notas = binding.editTextNotas2.text.toString()
             var notas = binding.editTextNotas2.text.toString()
             Toast.makeText(activity, "Viaje editado", Toast.LENGTH_SHORT).show()
-            var viaje2: Viajes = Viajes (id,nombre,destino,fecha1,fecha2,notas)
+            var viaje2: Viajes1 = Viajes1 (id,nombre,destino,fecha1,fecha2,notas)
 
             (activity as MainActivity).miViewModel.Actualizar(viaje2)
 
@@ -96,7 +101,7 @@ class Fourth_Fragment : Fragment() {
 
             var notas = binding.editTextNotas2.text.toString()
             Toast.makeText(activity, "Viaje editado", Toast.LENGTH_SHORT).show()
-            var viaje2: Viajes = Viajes (id,nombre,destino,fecha1,fecha2,notas)
+            var viaje2: Viajes1 = Viajes1 (id,nombre,destino,fecha1,fecha2,notas)
 
 
 

@@ -28,7 +28,8 @@ class Adaptador(var listaViajes: List<Viajes>, var secondFragment: SecondFragmen
         init {
             v.setOnClickListener {
                 val bundle = bundleOf("id" to this.id )
-                secondFragment.findNavController().navigate(R.id.action_SecondFragment_to_fourth_Fragment2, bundle)
+               secondFragment.findNavController().navigate(R.id.action_SecondFragment_to_fFourth_Fragment, bundle)
+
             }
         }
     }
@@ -46,6 +47,8 @@ class Adaptador(var listaViajes: List<Viajes>, var secondFragment: SecondFragmen
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+
         holder.nombre.text = "${listaViajes[position].name}"
         holder.destino.text="${listaViajes[position].Destino}"
         holder.fecha1.text="${listaViajes[position].fecha1}"
