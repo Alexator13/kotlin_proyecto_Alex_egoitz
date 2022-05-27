@@ -77,29 +77,6 @@ import com.example.kotlin_proyecto_alex_egoitz.databinding.ThirdFragmentBinding
          menu.findItem(R.id.ayuda_fr4)?.isVisible=false
      }
 
-     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-         // Handle action bar item clicks here. The action bar will
-         // automatically handle clicks on the Home/Up button, so long
-         // as you specify a parent activity in AndroidManifest.xml.
-         when (item.itemId) {
-             R.id.reset_fr3 -> {
-                 resetear()
-                 Log.d("resetear","reseteo")
-             }
-
-             else -> super.onOptionsItemSelected(item)
-         }
-         return true
-     }
-
-     fun resetear(){
-
-         binding.editTextViajeNombre.setText("")
-         binding.editTextSalidaFecha.setText("")
-         binding.editTextFechaVuelta.setText("")
-         binding.editTextNotas.setText("")
-     }
-
     fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)

@@ -71,9 +71,8 @@ open class fFourth_Fragment : Fragment() {
                 if (it.idViaje == id){
 
                     binding.editTextViajeNombre2.setText(it.name.toString())
-                     binding.editTextSalidaFecha2.setText(it.fecha1.toString())
-                     binding.editTextFechaVuelta2.setText(it.fecha2.toString())
-
+                    binding.editTextSalidaFecha2.setText(it.fecha1.toString())
+                    binding.editTextFechaVuelta2.setText(it.fecha2.toString())
                     binding.editTextNotas2.setText(it.Notas.toString())
                 }
             }}
