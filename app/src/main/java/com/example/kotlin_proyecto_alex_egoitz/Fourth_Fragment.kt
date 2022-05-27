@@ -59,18 +59,30 @@ open class fFourth_Fragment : Fragment() {
             spinner.adapter = adapter
         }
 
-        dataColect()
+       // dataColect()
         val id: Int = arguments?.getInt("id") ?: -1
         Log.d("id", id.toString())
 
         Log.d("lista", listaViajes.size.toString())
 
         if (id != -1) {
+            (activity as MainActivity).miViewModel.allViaje.observe(viewLifecycleOwner){ type ->
+            type?.forEach{
+                if (it.idViaje == id){
+
+                    binding.editTextViajeNombre2.setText(it.name.toString())
+                     binding.editTextSalidaFecha2.setText(it.fecha1.toString())
+                     binding.editTextFechaVuelta2.setText(it.fecha2.toString())
+
+                    binding.editTextNotas2.setText(it.Notas.toString())
+                }
+            }}
+
 
             // (activity as MainActivity).miViewModel.BuscarPorId(id)
-            var nombre = listaViajes[id].name.toString()
+           // var nombre = listaViajes[id].name.toString()
 
-            binding.editTextViajeNombre2.setText(nombre)
+         //   binding.editTextViajeNombre2.setText(nombre)
             // binding.editTextSalidaFecha2.setText((activity as MainActivity).listaViajes[id].fecha1)
             //binding.editTextFechaVuelta2.setText((activity as MainActivity).listaViajes[id].fecha2)
             //binding.editTextNotas2.setText((activity as MainActivity).listaViajes[id].notas)
@@ -95,7 +107,7 @@ open class fFourth_Fragment : Fragment() {
 
         }
         binding.buttonBorrar.setOnClickListener {
-           listaViajes.remove(listaViajes[id])
+//
             Toast.makeText(activity, "Viaje cancelado", Toast.LENGTH_SHORT).show()
 
             var nombre = binding.editTextViajeNombre2.text.toString()
@@ -108,7 +120,6 @@ open class fFourth_Fragment : Fragment() {
             var notas = binding.editTextNotas2.text.toString()
             Toast.makeText(activity, "Viaje editado", Toast.LENGTH_SHORT).show()
             var viaje2: Viajes1 = Viajes1(id, nombre, destino, fecha1, fecha2, notas)
-
 
 
             (activity as MainActivity).miViewModel.Borrar(viaje2)

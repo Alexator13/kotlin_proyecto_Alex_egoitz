@@ -15,6 +15,7 @@ interface ViajeDao {
 
     @Query("DELETE FROM  viaje_tabla")
  fun borrarTodo()
+
     @Query("SELECT * FROM VIAJE_TABLA where idViaje like :id")
     fun BuscarPorid(id:Int): Flow<Viajes>
     @Update
