@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     val database by lazy { GfgDatabase.getDatabase(this ) }
     val miRepositorio by lazy { Repositorio(database.getviajeDao()) }
     val miViewModel:ViajeViewModel by viewModels{ViajeViewModelFactory(miRepositorio)  }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

@@ -28,8 +28,8 @@ open class fFourth_Fragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
-
+    var size = 9999
+    var listaViajes: MutableList<Viajes1> = mutableListOf()
 
 
     override fun onCreateView(
@@ -58,38 +58,44 @@ open class fFourth_Fragment : Fragment() {
             // Apply the adapter to the spinner
             spinner.adapter = adapter
         }
-        val id:Int=arguments?.getInt("id") ?: -1
-        Log.d("id",id.toString())
+
+        dataColect()
+        val id: Int = arguments?.getInt("id") ?: -1
+        Log.d("id", id.toString())
+
+        Log.d("lista", listaViajes.size.toString())
+
         if (id != -1) {
-          // (activity as MainActivity).miViewModel.BuscarPorId(id)
 
+            // (activity as MainActivity).miViewModel.BuscarPorId(id)
+            var nombre = listaViajes[id].name.toString()
 
-        //   binding.editTextSalidaFecha2.setText((activity as MainActivity).listaViajes[id].nombre)
-           // binding.editTextSalidaFecha2.setText((activity as MainActivity).listaViajes[id].fecha1)
+            binding.editTextViajeNombre2.setText(nombre)
+            // binding.editTextSalidaFecha2.setText((activity as MainActivity).listaViajes[id].fecha1)
             //binding.editTextFechaVuelta2.setText((activity as MainActivity).listaViajes[id].fecha2)
             //binding.editTextNotas2.setText((activity as MainActivity).listaViajes[id].notas)
         }
 
         //botnes de editar y borrar
         binding.buttonEditar.setOnClickListener {
-         //   (activity as MainActivity).listaViajes[id].nombre = binding.editTextViajeNombre2.text.toString()
+            //   (activity as MainActivity).listaViajes[id].nombre = binding.editTextViajeNombre2.text.toString()
             var nombre = binding.editTextViajeNombre2.text.toString()
-       //     (activity as MainActivity).listaViajes[id].destino = binding.spinnerDestinos.selectedItem.toString()
+            //     (activity as MainActivity).listaViajes[id].destino = binding.spinnerDestinos.selectedItem.toString()
             var destino = binding.spinnerDestinos.selectedItem.toString()
-        //    (activity as MainActivity).listaViajes[id].fecha1 = binding.editTextSalidaFecha2.text.toString()
+            //    (activity as MainActivity).listaViajes[id].fecha1 = binding.editTextSalidaFecha2.text.toString()
             var fecha1 = binding.editTextSalidaFecha2.text.toString()
-         //   (activity as MainActivity).listaViajes[id].fecha2 = binding.editTextFechaVuelta2.text.toString()
+            //   (activity as MainActivity).listaViajes[id].fecha2 = binding.editTextFechaVuelta2.text.toString()
             var fecha2 = binding.editTextFechaVuelta2.text.toString()
-         //   (activity as MainActivity).listaViajes[id].notas = binding.editTextNotas2.text.toString()
+            //   (activity as MainActivity).listaViajes[id].notas = binding.editTextNotas2.text.toString()
             var notas = binding.editTextNotas2.text.toString()
             Toast.makeText(activity, "Viaje editado", Toast.LENGTH_SHORT).show()
-            var viaje2: Viajes1 = Viajes1 (id,nombre,destino,fecha1,fecha2,notas)
+            var viaje2: Viajes1 = Viajes1(id, nombre, destino, fecha1, fecha2, notas)
 
             (activity as MainActivity).miViewModel.Actualizar(viaje2)
 
         }
         binding.buttonBorrar.setOnClickListener {
-            (activity as MainActivity).listaViajes.remove((activity as MainActivity).listaViajes[id])
+           listaViajes.remove(listaViajes[id])
             Toast.makeText(activity, "Viaje cancelado", Toast.LENGTH_SHORT).show()
 
             var nombre = binding.editTextViajeNombre2.text.toString()
@@ -101,7 +107,7 @@ open class fFourth_Fragment : Fragment() {
 
             var notas = binding.editTextNotas2.text.toString()
             Toast.makeText(activity, "Viaje editado", Toast.LENGTH_SHORT).show()
-            var viaje2: Viajes1 = Viajes1 (id,nombre,destino,fecha1,fecha2,notas)
+            var viaje2: Viajes1 = Viajes1(id, nombre, destino, fecha1, fecha2, notas)
 
 
 
@@ -112,11 +118,30 @@ open class fFourth_Fragment : Fragment() {
 
     }
 
+    fun dataColect() {
+
+        (activity as MainActivity).miViewModel.allViaje.observe(viewLifecycleOwner) { type ->
+            type?.forEach {
+
+                listaViajes.add(id,
+                    Viajes1(
+                        id,
+                        it.name.toString(),
+                        it.Destino.toString(),
+                        it.fecha1.toString(),
+                        it.fecha2.toString(),
+                        it.Notas.toString()
+                    )
+                )
+            }
+        }
+    }
+
     override fun onPrepareOptionsMenu(menu: Menu) {
         super.onPrepareOptionsMenu(menu)
-        menu.findItem(R.id.ayuda_fr1)?.isVisible=false
-        menu.findItem(R.id.ayuda_fr2)?.isVisible=false
-        menu.findItem(R.id.ayuda_fr3)?.isVisible=false
+        menu.findItem(R.id.ayuda_fr1)?.isVisible = false
+        menu.findItem(R.id.ayuda_fr2)?.isVisible = false
+        menu.findItem(R.id.ayuda_fr3)?.isVisible = false
     }
 
     override fun onDestroyView() {
@@ -124,15 +149,14 @@ open class fFourth_Fragment : Fragment() {
         _binding = null
     }
 
-     fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
+    fun onItemSelected(parent: AdapterView<*>, view: View?, pos: Int, id: Long) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
     }
 
-     fun onNothingSelected(parent: AdapterView<*>) {
+    fun onNothingSelected(parent: AdapterView<*>) {
         // Another interface callback
     }
-
 
 
 }
